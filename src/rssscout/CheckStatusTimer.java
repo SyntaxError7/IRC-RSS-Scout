@@ -14,7 +14,7 @@ public class CheckStatusTimer {
         toolkit = Toolkit.getDefaultToolkit();
         timer = new Timer();
         int timeBetweenSearches = MyBot.getTimeBetweenSearches();        
-        int milliseconds = timeBetweenSearches * 60 * 100;
+        int milliseconds = timeBetweenSearches * 60 * 1000;
         // 1 800 000
         
         timer.schedule(new RemindTask(), 10000, //initial delay (20 seconds)

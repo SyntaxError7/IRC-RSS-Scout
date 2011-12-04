@@ -111,8 +111,7 @@ public class RSSReader {
                         }
                         }
                 }
-            }
-                writeFirstReadToFile(firstItem, url);
+            }writeFirstReadToFile(firstItem, url);
 
 
 
@@ -120,8 +119,10 @@ public class RSSReader {
 
             }//try
          catch (Exception ex) {
+             System.out.println(ex);
+             writeFirstReadToFile(firstItem, url);
         }
-
+            
 
 
 
