@@ -15,9 +15,9 @@ import org.jibble.pircbot.PircBot;
 
 public class MyBot extends PircBot {
 
-    public static String botNick, botIdent, ipAddy, pass, joinChan, operBot, operLine, commandChar, lastReadLoc;
+    public static String botNick, botIdent, ipAddy, pass, joinChan, operBot, operLine, commandChar, lastReadLoc, bitlyUserName, bitlyApiKey;
     public static int port, messageDelay, maxResults, timeBetweenSearches;
-    public static boolean usingSSL;
+    public static boolean usingSSL, usingBitly;
     public static ArrayList<String> urlAndSearchTerms = new ArrayList();
     public static ArrayList<RssObject> RssObj = new ArrayList<RssObject>();
     static Properties config = new Properties();
@@ -47,6 +47,9 @@ public class MyBot extends PircBot {
         lastReadLoc = config.getProperty("lastReadLoc");
         maxResults = Integer.parseInt(config.getProperty("maxResults"));
         timeBetweenSearches = Integer.parseInt(config.getProperty("timeBetweenSearches"));
+        bitlyUserName = config.getProperty("bitlyUserName");
+        bitlyApiKey = config.getProperty("bitlyApiKey");
+        usingBitly = Boolean.parseBoolean(config.getProperty("useBitly"));
 
 
 
@@ -67,6 +70,18 @@ public class MyBot extends PircBot {
 
     }
 
+    public static String getBitlyUserName()
+    {
+        return bitlyUserName;
+    }
+    public static String getBitlyApiKey()
+    {
+        return bitlyApiKey;
+    }
+    public static boolean getUsingBitly()
+    {
+        return usingBitly;
+    }
     
     public static int getTimeBetweenSearches()
     {

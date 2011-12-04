@@ -71,43 +71,48 @@ public class RSSReader {
                 } else {
 
                     if (onSearchList(sTerms, lowerCaseTitle)) {
+                        
+                        String link = getElementValue(element, "link");
+                        
+                        if (MyBot.usingBitly)
+                        link = Bitly.shortenURL(link);
 
                         if (StringColor.equalsIgnoreCase("black")) {
-                            RssScout.bot.sendMessage(chan, Colors.BLACK + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + getElementValue(element, "link"));
+                            RssScout.bot.sendMessage(chan, Colors.BLACK + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("blue")) {
-                            RssScout.bot.sendMessage(chan, Colors.BLUE + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + getElementValue(element, "link"));
+                            RssScout.bot.sendMessage(chan, Colors.BLUE + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("bold")) {
-                            RssScout.bot.sendMessage(chan, Colors.BOLD + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + getElementValue(element, "link"));
+                            RssScout.bot.sendMessage(chan, Colors.BOLD + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("brown")) {
-                            RssScout.bot.sendMessage(chan, Colors.BROWN + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + getElementValue(element, "link"));
+                            RssScout.bot.sendMessage(chan, Colors.BROWN + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("cyan")) {
-                            RssScout.bot.sendMessage(chan, Colors.CYAN + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + getElementValue(element, "link"));
+                            RssScout.bot.sendMessage(chan, Colors.CYAN + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("dark_blue")) {
-                            RssScout.bot.sendMessage(chan, Colors.DARK_BLUE + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + getElementValue(element, "link"));
+                            RssScout.bot.sendMessage(chan, Colors.DARK_BLUE + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("dark_gray")) {
-                            RssScout.bot.sendMessage(chan, Colors.DARK_GRAY + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + getElementValue(element, "link"));
+                            RssScout.bot.sendMessage(chan, Colors.DARK_GRAY + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("dark_green")) {
-                            RssScout.bot.sendMessage(chan, Colors.DARK_GREEN + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + getElementValue(element, "link"));
+                            RssScout.bot.sendMessage(chan, Colors.DARK_GREEN + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("green")) {
-                            RssScout.bot.sendMessage(chan, Colors.GREEN + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + getElementValue(element, "link"));
+                            RssScout.bot.sendMessage(chan, Colors.GREEN + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("light_gray")) {
-                            RssScout.bot.sendMessage(chan, Colors.LIGHT_GRAY + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + getElementValue(element, "link"));
+                            RssScout.bot.sendMessage(chan, Colors.LIGHT_GRAY + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("magenta")) {
-                            RssScout.bot.sendMessage(chan, Colors.MAGENTA + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + getElementValue(element, "link"));
+                            RssScout.bot.sendMessage(chan, Colors.MAGENTA + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("olive")) {
-                            RssScout.bot.sendMessage(chan, Colors.OLIVE + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + getElementValue(element, "link"));
+                            RssScout.bot.sendMessage(chan, Colors.OLIVE + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("purple")) {
-                            RssScout.bot.sendMessage(chan, Colors.PURPLE + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + getElementValue(element, "link"));
+                            RssScout.bot.sendMessage(chan, Colors.PURPLE + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("red")) {
-                            RssScout.bot.sendMessage(chan, Colors.RED + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + getElementValue(element, "link"));
+                            RssScout.bot.sendMessage(chan, Colors.RED + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("teal")) {
-                            RssScout.bot.sendMessage(chan, Colors.TEAL + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + getElementValue(element, "link"));
+                            RssScout.bot.sendMessage(chan, Colors.TEAL + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("white")) {
-                            RssScout.bot.sendMessage(chan, Colors.WHITE + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + getElementValue(element, "link"));
+                            RssScout.bot.sendMessage(chan, Colors.WHITE + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("yellow")) {
-                            RssScout.bot.sendMessage(chan, Colors.YELLOW + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + getElementValue(element, "link"));
+                            RssScout.bot.sendMessage(chan, Colors.YELLOW + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("normal")) {
-                            RssScout.bot.sendMessage(chan, Colors.NORMAL + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + getElementValue(element, "link"));
+                            RssScout.bot.sendMessage(chan, Colors.NORMAL + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
                         }
                         }
                 }
