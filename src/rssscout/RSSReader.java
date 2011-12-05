@@ -39,7 +39,6 @@ public class RSSReader {
     }
 
     public void writeNews(String url, String chan, String StringColor, ArrayList<String> sTerms) {
-        
         try {
 
 
@@ -47,6 +46,7 @@ public class RSSReader {
             DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             URL u = new URL(url); // your feed url
             Document doc = builder.parse(u.openStream());
+
             NodeList nodes = doc.getElementsByTagName("item");
 
             Element firstElement = (Element) nodes.item(0);
@@ -64,7 +64,8 @@ public class RSSReader {
 
 
                 Element element = (Element) nodes.item(i);
-                String lowerCaseTitle = getElementValue(element, "title").toLowerCase();
+                String title = getElementValue(element, "title");
+                String lowerCaseTitle = title.toLowerCase();
 
 
                 if (getElementValue(element, "link").equalsIgnoreCase(lastRead)) { // end of new links
@@ -72,68 +73,64 @@ public class RSSReader {
                 } else {
 
                     if (onSearchList(sTerms, lowerCaseTitle)) {
-                        
+
                         String link = getElementValue(element, "link");
-                        
-                        if (MyBot.usingBitly)
-                        link = Bitly.shortenURL(link);
+
+                        if (MyBot.usingBitly) {
+                            link = Bitly.shortenURL(link);
+                        }
 
                         if (StringColor.equalsIgnoreCase("black")) {
-                            RssScout.bot.sendMessage(chan, Colors.BLACK + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
+                            RssScout.bot.sendMessage(chan, Colors.BLACK + title + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("blue")) {
-                            RssScout.bot.sendMessage(chan, Colors.BLUE + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
+                            RssScout.bot.sendMessage(chan, Colors.BLUE + title + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("bold")) {
-                            RssScout.bot.sendMessage(chan, Colors.BOLD + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
+                            RssScout.bot.sendMessage(chan, Colors.BOLD + title + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("brown")) {
-                            RssScout.bot.sendMessage(chan, Colors.BROWN + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
+                            RssScout.bot.sendMessage(chan, Colors.BROWN + title + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("cyan")) {
-                            RssScout.bot.sendMessage(chan, Colors.CYAN + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
+                            RssScout.bot.sendMessage(chan, Colors.CYAN + title + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("dark_blue")) {
-                            RssScout.bot.sendMessage(chan, Colors.DARK_BLUE + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
+                            RssScout.bot.sendMessage(chan, Colors.DARK_BLUE + title + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("dark_gray")) {
-                            RssScout.bot.sendMessage(chan, Colors.DARK_GRAY + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
+                            RssScout.bot.sendMessage(chan, Colors.DARK_GRAY + title + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("dark_green")) {
-                            RssScout.bot.sendMessage(chan, Colors.DARK_GREEN + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
+                            RssScout.bot.sendMessage(chan, Colors.DARK_GREEN + title + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("green")) {
-                            RssScout.bot.sendMessage(chan, Colors.GREEN + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
+                            RssScout.bot.sendMessage(chan, Colors.GREEN + title + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("light_gray")) {
-                            RssScout.bot.sendMessage(chan, Colors.LIGHT_GRAY + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
+                            RssScout.bot.sendMessage(chan, Colors.LIGHT_GRAY + title + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("magenta")) {
-                            RssScout.bot.sendMessage(chan, Colors.MAGENTA + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
+                            RssScout.bot.sendMessage(chan, Colors.MAGENTA + title + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("olive")) {
-                            RssScout.bot.sendMessage(chan, Colors.OLIVE + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
+                            RssScout.bot.sendMessage(chan, Colors.OLIVE + title + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("purple")) {
-                            RssScout.bot.sendMessage(chan, Colors.PURPLE + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
+                            RssScout.bot.sendMessage(chan, Colors.PURPLE + title + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("red")) {
-                            RssScout.bot.sendMessage(chan, Colors.RED + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
+                            RssScout.bot.sendMessage(chan, Colors.RED + title + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("teal")) {
-                            RssScout.bot.sendMessage(chan, Colors.TEAL + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
+                            RssScout.bot.sendMessage(chan, Colors.TEAL + title + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("white")) {
-                            RssScout.bot.sendMessage(chan, Colors.WHITE + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
+                            RssScout.bot.sendMessage(chan, Colors.WHITE + title + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("yellow")) {
-                            RssScout.bot.sendMessage(chan, Colors.YELLOW + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
+                            RssScout.bot.sendMessage(chan, Colors.YELLOW + title + Colors.BROWN + " | " + Colors.NORMAL + link);
                         } else if (StringColor.equalsIgnoreCase("normal")) {
-                            RssScout.bot.sendMessage(chan, Colors.NORMAL + getElementValue(element, "title") + Colors.BROWN + " | " + Colors.NORMAL + link);
+                            RssScout.bot.sendMessage(chan, Colors.NORMAL + title + Colors.BROWN + " | " + Colors.NORMAL + link);
                         }
-                        }
+                    }
                 }
-            }//writeFirstReadToFile(firstItem, url);
+            }
 
 
 
 
 
-            }//try
-         catch (Exception ex) {
-             System.out.println(ex);
-        }finally
-        {
-             writeFirstReadToFile(firstItem, url);
+        }//try
+        catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            writeFirstReadToFile(firstItem, url);
         }
-            
-
-
-
     }
 
     private boolean onSearchList(ArrayList<String> sList, String titleToMatch) {

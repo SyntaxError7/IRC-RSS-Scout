@@ -51,6 +51,7 @@ public class RssObject {
 
         Scanner scanner = new Scanner(aLine);
         scanner.useDelimiter(";");
+        try{
         if (scanner.hasNext()) {
             url = scanner.next();
             chans = scanner.next();
@@ -59,6 +60,11 @@ public class RssObject {
             System.out.println("Name: " + url + " chans: " + chans + " color: " + color + " searchTerms: " + searchTerms);
             System.out.println();
             //no need to call scanner.close(), since the source is a String
+        }
+        }catch(Exception e)
+        {
+         System.out.println("Please check rssLinks.txt, proper config is: rss url;channel(s);color;search term(s)");
+         System.exit(0);
         }
     }
 }
