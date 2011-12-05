@@ -39,6 +39,7 @@ public class RSSReader {
     }
 
     public void writeNews(String url, String chan, String StringColor, ArrayList<String> sTerms) {
+        
         try {
 
 
@@ -116,7 +117,7 @@ public class RSSReader {
                         }
                         }
                 }
-            }writeFirstReadToFile(firstItem, url);
+            }//writeFirstReadToFile(firstItem, url);
 
 
 
@@ -125,6 +126,8 @@ public class RSSReader {
             }//try
          catch (Exception ex) {
              System.out.println(ex);
+        }finally
+        {
              writeFirstReadToFile(firstItem, url);
         }
             
