@@ -6,6 +6,8 @@ package rssscout;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -63,7 +65,12 @@ public class RssObject {
         }
         }catch(Exception e)
         {
-         System.out.println("Please check rssLinks.txt, proper config is: rss url;channel(s);color;search term(s)");
+         String message = "Please check rssLinks.txt, proper config is: rss url;channel(s);color;search term(s)";
+         message += "\n chans = " + chans;
+         message += "\n color = " + color;
+         message += "\n search terms = " + searchTerms;
+         JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",
+         JOptionPane.ERROR_MESSAGE);
          System.exit(0);
         }
     }
